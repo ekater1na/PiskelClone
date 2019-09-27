@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="google-signin-scope" content="profile email">
+      <meta name="google-signin-client_id" content="554584752638-lp7q3rlhqg4m0tm07fan251u8jhei0ab.apps.googleusercontent.com">
+      <title>Piskel Clone</title>
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
+      <link rel="stylesheet" type="text/css" href="src/stylesheets/style.css">
+      </head>
+
+  <body>
+
+  <header class="header">
+      <!-- NAVBAR -->
+      <a href="#" class="brand-logo">
+        <img src="src/pictures/logo_transparent_small_compact.png" style="width: 180px; margin-top: 10px; background-color: #000000; border: 1px solid #000000">
+      </a>
+      <div class="facebook">
+          <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+      </div>
+    </header>
+
+  <main>
+      <article class="main-workspace">
+          <section class="main-workspace-tools">
+              <div class="main-workspace-tools-wrapper">
+              <div class="pen-size-tool-wrapper">
+                <div class="pen-size-tool" data-size="32">2</div>
+                <div class="pen-size-tool" data-size="48">3</div>
+                <div class="pen-size-tool" data-size="64">4</div>
+              </div>
+                  <ul class="tools-items">
+                    <li class="tools">
+                      <button class="tools-button tools-button-active" id="pensil" data-tool="pensil">
+                        <img src="src/pictures/pencil-alt-solid.svg" alt="" class="tools-icon">
+                      </button>
+                    </li>
+                    <li class="tools">
+                      <button class="tools-button" id="color_picker" data-tool="color_picker">
+                        <img src="src/pictures/eye-dropper-solid.svg" alt="" class="tools-icon">
+                      </button>
+                    </li>
+                    <li class="tools">
+                      <button class="tools-button" id="eraser" data-tool="eraser">
+                        <img src="src/pictures/eraser-solid.svg" alt="" class="tools-icon">
+                      </button>
+                    </li>
+                    <li class="tools"></li>
+                      <button class="tools-button" id="bucket" data-tool="bucket">
+                        <img src="src/pictures/fill-drip-solid.svg" alt="" class="tools-icon">
+                    </button>
+                    </li>
+                  </ul>
+              </div>
+          </section>
+
+          <section class="secondary-workspace-tools">
+            <section class="canvas-wrapper">
+              <div class="canvas" id="frames">
+              </div>
+            </section>
+              <button class="add-frame-btn" id="add-frame-btn">Add frame</button>
+          </section>
+
+          <section class="color">
+              <div class="color-wrapper">
+                  <input class="colors-display" id="chosen_color" type="color" value="#000000">
+                  <input class="colors-display" id="previous_color" type="color" value="#F00F00">
+
+                <ul class="colors">
+                  <li class="tools"></li>
+                      <button class="tools-button" id="myBtn">
+                        <img src="src/pictures/keyboard-regular.svg" alt="" class="tools-icon">
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              <div id="myModal" class="modal-key">
+                  <!-- Modal content -->
+                  <div class="modal-content-key">
+                    <div class="modal-header-key">
+                      <span class="close-key">&times;</span>
+                      <h4>Keyboard shortcuts</h4>
+                    </div>
+                    <div class="modal-body-key">
+                      <p>Pensil - P</p>
+                      <p>Eraser - E</p>
+                    </div>
+                  </div>
+                </div>
+
+          </section>
+
+
+          <div class="mainCanvas">
+
+            <canvas id='myCanvas' width="640px" height="640px"/>
+          </div>
+
+          <section class="preview">
+            <canvas id="preview"></canvas>
+            <input type="range" min="1" max="24" value="5" id="fpsRange">
+            <div class="coordinates">Cursor coordinates: <div id='cursor-coordinates'></div>  </div>
+            <div class="coordinates">Canvas size: <div id='canvas-size'></div>  </div>
+          </section>
+
+      </article>
+
+
+
+  </main>
+  <script>
+    function onSignIn(googleUser) {
+      // Useful data for your client-side scripts:
+      var profile = googleUser.getBasicProfile();
+      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+      console.log('Full Name: ' + profile.getName());
+      console.log('Given Name: ' + profile.getGivenName());
+      console.log('Family Name: ' + profile.getFamilyName());
+      console.log("Image URL: " + profile.getImageUrl());
+      console.log("Email: " + profile.getEmail());
+
+      // The ID token you need to pass to your backend:
+      var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token);
+    }
+  </script>
+  <script src="dist/app.bundle.js"></script>
+        <footer></footer>
+    </body>
+</html>
