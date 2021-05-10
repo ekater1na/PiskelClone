@@ -5,7 +5,7 @@
   "main": "./src/scripts/index.js",
   "dependencies": {
     "firebaseui": "^4.0.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
